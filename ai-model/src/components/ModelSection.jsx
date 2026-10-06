@@ -10,6 +10,10 @@ const ModelSection = ({ modelsPromise }) => {
   const handleCarts = (model) => {
     setCarts([...carts, model]);
   };
+   const handleDeleteCart=(cart)=>{
+    const filterArray=carts.filter(item=>item.id!==cart.id)
+    setCarts(filterArray)
+  }
 
   // console.log(carts)
   return (
@@ -44,7 +48,7 @@ const ModelSection = ({ modelsPromise }) => {
           ))}
         </div>
       ) : (
-        <CartSection carts={carts}></CartSection>
+        <CartSection carts={carts} handleDeleteCart={handleDeleteCart} setCarts={setCarts} ></CartSection>
       )}
     </div>
   );
