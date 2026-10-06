@@ -1,6 +1,7 @@
 import { use, useState } from "react";
 import ModelCard from "./modelCard";
 import CartSection from "./CartSection";
+import { toast } from "react-toastify";
 
 const ModelSection = ({ modelsPromise }) => {
   const [tabColor, setTabColor] = useState("models");
@@ -8,7 +9,13 @@ const ModelSection = ({ modelsPromise }) => {
   const models = use(modelsPromise);
 
   const handleCarts = (model) => {
+    const isFound=carts.find(item=>item.id===model.id)
+    if(isFound){
+      toast.error("This item already exists.")
+      return;
+    }
     setCarts([...carts, model]);
+    toast.success("Item added in the cart")
   };
    const handleDeleteCart=(cart)=>{
     const filterArray=carts.filter(item=>item.id!==cart.id)
