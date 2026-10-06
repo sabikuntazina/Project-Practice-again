@@ -1,0 +1,5 @@
+[[headers]]
+  for = "/models.json"
+
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
